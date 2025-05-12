@@ -145,9 +145,6 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                           ),
                         ],
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
                     ],
                   ),
                 ],

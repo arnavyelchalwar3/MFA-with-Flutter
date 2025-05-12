@@ -99,7 +99,7 @@ class _MfascreenState extends State<Mfascreen> {
                       Text("Incorrect Answer");
                     }
 
-                    // if (typeText.text == "Paris") {
+                    // if (typeText.text == "paris") {
                     //   Navigator.push(
                     //     context,
                     //     MaterialPageRoute(
