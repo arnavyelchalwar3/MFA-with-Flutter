@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:multi_factor_autentication_page/Pages/MFAscreen.dart';
+import 'MFAscreen.dart';
 
 class Loginpage extends StatefulWidget {
   const Loginpage({super.key});
@@ -90,7 +92,13 @@ class _LoginpageState extends State<Loginpage> {
                     backgroundColor: Colors.blue,
                     minimumSize: const Size(380, 50),
                   ),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const Mfascreen()),
+                    );
+                  },
                   child: const Text('Login',
                       style: TextStyle(
                         fontSize: 20,
