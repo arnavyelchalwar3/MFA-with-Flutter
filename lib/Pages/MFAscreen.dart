@@ -71,9 +71,11 @@ class _MfascreenState extends State<Mfascreen> {
                 Text("What is your favorite vacation spot....?"),
                 SizedBox(height: 20),
                 TextField(
+                  obscureText: true,
                   controller: typeText,
                   decoration: InputDecoration(
                       labelText: ' Your Answer',
+                      hintText: 'Enter your answer',
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(5.0),
                       )),
@@ -87,28 +89,22 @@ class _MfascreenState extends State<Mfascreen> {
                   onPressed: () {
                     var textField = typeText.text;
 
-                    if (textField == "Paris") {
+                    if (textField == "dubai") {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => Dashboardscreen()),
                       );
                     } else {
+                      var textField = "";
                       // Show error message
+                      // ignore: avoid_print
+                      void printError() {
+                        print("Incorrect Answer");
+                      }
 
                       Text("Incorrect Answer");
                     }
-
-                    // if (typeText.text == "paris") {
-                    //   Navigator.push(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //         builder: (context) => Dashboardscreen()),
-                    //   );
-                    // } else {
-                    //   // Show error message
-                    //   Text("Incorrect Answer");
-                    // }
                   },
                   child: const Text('Submit',
                       style: TextStyle(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:multi_factor_autentication_page/Pages/BankingAppScreen.dart';
 import 'package:multi_factor_autentication_page/Pages/loginPage.dart';
 import 'DummyScreen.dart';
 import 'loginPage.dart';
@@ -141,7 +142,7 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                                     ),
                                   ),
                                   Text(
-                                    "₹12,340.50",
+                                    '\$12,340.50',
                                     style: TextStyle(
                                       color: Colors.green,
                                       fontSize: 20,
@@ -211,7 +212,7 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                               Padding(
                                 padding: const EdgeInsets.only(right: 18),
                                 child: Text(
-                                  "12/25",
+                                  "12/26",
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontSize: 17,
@@ -229,15 +230,24 @@ class _DashboardscreenState extends State<Dashboardscreen> {
               ),
               Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Icon(
-                        Icons.account_balance,
-                        size: 30,
-                        color: Colors.blue,
-                      ),
-                    ],
+                  SizedBox(
+                    height: 200,
+                    child: GridView.count(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisCount: 4,
+                      mainAxisSpacing: 20,
+                      children: [
+                        _buildIcon(Icons.account_balance, "Bank"),
+                        _buildIcon(Icons.credit_card, "Cards"),
+                        _buildIcon(Icons.payment, "Pay"),
+                        _buildIcon(Icons.show_chart, "Invest"),
+                        _buildIcon(Icons.support_agent, "Suport"),
+                        _buildIcon(Icons.settings, "Settings"),
+                        _buildIcon(Icons.qr_code, "Scan"),
+                        _buildIcon(Icons.more_horiz, "More"),
+                      ],
+                    ),
                   ),
                 ],
               )
@@ -246,25 +256,72 @@ class _DashboardscreenState extends State<Dashboardscreen> {
         ),
       ),
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.white,
+        selectedItemColor: Colors.blue,
+        unselectedItemColor: Colors.grey,
+        type: BottomNavigationBarType.fixed,
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(Icons.account_balance_wallet),
+            icon: Icon(
+              Icons.account_balance_wallet,
+            ),
             label: 'Accounts',
+            //color: Colors.black,
+            backgroundColor: Colors.white,
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.send),
+            icon: Icon(
+              Icons.send,
+              color: Color.fromARGB(255, 121, 107, 107),
+            ),
             label: 'Fund Transfer',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.receipt),
+            icon: Icon(
+              Icons.receipt,
+              color: Color.fromARGB(255, 101, 93, 93),
+            ),
             label: 'Bill Payment',
           ),
-          // BottomNavigationBarItem(
-          //   icon: Icon(Icons.person),
-          //   label: 'Profile',
-          // ),
+          BottomNavigationBarItem(
+            icon: Icon(
+              Icons.photo_camera,
+              color: Color.fromARGB(255, 101, 93, 93),
+            ),
+            label: 'Check Deposit',
+          ),
         ],
       ),
     );
   }
+}
+
+Widget _buildIcon(IconData icon, String label) {
+  return Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      Container(
+        width: 55,
+        height: 55,
+        decoration: BoxDecoration(
+          color: Colors.blue.shade100,
+          shape: BoxShape.circle,
+        ),
+        child: Icon(
+          icon,
+          color: Colors.blue.shade700,
+          size: 24,
+        ),
+      ),
+      const SizedBox(height: 8),
+      Text(
+        label,
+        style: TextStyle(
+          fontSize: 12,
+          color: Colors.black87,
+          fontWeight: FontWeight.w500,
+        ),
+      ),
+    ],
+  );
 }
