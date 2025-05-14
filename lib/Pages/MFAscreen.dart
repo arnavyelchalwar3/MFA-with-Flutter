@@ -14,6 +14,8 @@ class Mfascreen extends StatefulWidget {
 
 class _MfascreenState extends State<Mfascreen> {
   var typeText = TextEditingController();
+  String msg = "";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +34,7 @@ class _MfascreenState extends State<Mfascreen> {
         child: Padding(
           padding: const EdgeInsets.only(top: 100, left: 50, right: 50),
           child: Container(
-            height: 400,
+            height: 430,
             width: 750,
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
@@ -89,21 +91,20 @@ class _MfascreenState extends State<Mfascreen> {
                   onPressed: () {
                     var textField = typeText.text;
 
-                    if (textField == "dubai") {
+                    if (textField.isEmpty) {
+                      setState(() {
+                        msg = "enter answer first";
+                      });
+                    } else if (textField == "dubai") {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => Dashboardscreen()),
                       );
                     } else {
-                      var textField = "";
-                      // Show error message
-                      // ignore: avoid_print
-                      void printError() {
-                        print("Incorrect Answer");
-                      }
-
-                      Text("Incorrect Answer");
+                      setState(() {
+                        msg = "Incorrect answer";
+                      });
                     }
                   },
                   child: const Text('Submit',
@@ -113,6 +114,12 @@ class _MfascreenState extends State<Mfascreen> {
                         //fontWeight: FontWeight.bold,
                       )),
                 ),
+                SizedBox(height: 10),
+                Text(msg,
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.red,
+                    )),
                 SizedBox(height: 20),
                 Padding(
                   padding: const EdgeInsets.only(left: 80),

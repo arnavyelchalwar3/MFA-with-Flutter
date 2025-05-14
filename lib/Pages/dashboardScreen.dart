@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:multi_factor_autentication_page/Pages/BankingAppScreen.dart';
 import 'package:multi_factor_autentication_page/Pages/loginPage.dart';
-import 'DummyScreen.dart';
 import 'loginPage.dart';
 
 class Dashboardscreen extends StatefulWidget {
@@ -74,19 +72,19 @@ class _DashboardscreenState extends State<Dashboardscreen> {
                               color: Colors.black,
                             ),
                           ),
-                          SizedBox(
-                            width: 10,
-                          ),
-                          Align(
-                            alignment: Alignment.topLeft,
-                            child: Text(
-                              "Jhon Doe",
-                              style: TextStyle(
-                                fontSize: 17,
-                                color: Colors.black,
-                              ),
+                          // SizedBox(
+                          //   width: 10,
+                          // ),
+                          // Align(
+                          //   alignment: Alignment.topLeft,
+                          Text(
+                            "Jhon Doe",
+                            style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.black,
                             ),
                           ),
+                          //),
                         ],
                       ),
                       SizedBox(

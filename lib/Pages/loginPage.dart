@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:multi_factor_autentication_page/Pages/MFAscreen.dart';
 import 'MFAscreen.dart';
@@ -8,6 +10,9 @@ class Loginpage extends StatefulWidget {
   @override
   State<Loginpage> createState() => _LoginpageState();
 }
+
+var emailController = TextEditingController();
+var passController = TextEditingController();
 
 class _LoginpageState extends State<Loginpage> {
   @override
@@ -56,6 +61,7 @@ class _LoginpageState extends State<Loginpage> {
                 ),
                 const SizedBox(height: 40),
                 TextField(
+                  controller: emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
                     border: OutlineInputBorder(
@@ -65,6 +71,7 @@ class _LoginpageState extends State<Loginpage> {
                 ),
                 const SizedBox(height: 10),
                 TextField(
+                  controller: passController,
                   obscureText: true,
                   decoration: InputDecoration(
                     labelText: 'Password',
@@ -94,11 +101,22 @@ class _LoginpageState extends State<Loginpage> {
                     minimumSize: const Size(380, 50),
                   ),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const Mfascreen()),
-                    );
+                    var emailfield = emailController.text;
+                    var passfield = passController.text;
+
+                    if (emailfield == 'arnav3@gmail.com' &&
+                        passfield == 'pass123') {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Mfascreen()),
+                      );
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text('enter valid email and password')),
+                      );
+                    }
                   },
                   child: const Text('Login',
                       style: TextStyle(
